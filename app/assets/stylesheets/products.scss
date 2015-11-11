@@ -1,0 +1,25 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.productname {
+  background: steelblue
+}
+
+// Class
+
+img {
+  width: 25%;
+  height: 25%
+}
+
+.row {
+  font-weight: bold;
+  color: white
+}
+
+// Class
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
