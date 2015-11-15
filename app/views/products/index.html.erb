@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>Nick <img src="https://www.walmartmoneycard.com/cmsviews/walmart/assets/shared/wm_spark.png" height="36" width="36"> Mart
+  <small>(A Family Company...)</small></h1>
+</div>
+<div class="row">
+  <% @products.each do |name| %>
+    <center>
+      <div class ="col-md-6">
+        <div class ="product-box">
+          Product Name:<a href="/products/<%= name.id %>">
+          <%= link_to name.name, "/products/#{name.id}" %></a></p>
+          <p><img src="<%=name.image %> " class="img-responsive"></p>
+          <p>Price: <%= name.price %></p>
+          <p>Description: <%= name.description %></p>
+        </div>
+      </div>  
+    </center>
+  <% end %>
+</div>
