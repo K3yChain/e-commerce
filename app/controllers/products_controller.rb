@@ -1,7 +1,11 @@
 class ProductsController < ApplicationController
 
 def index
-  @products = Product.all
+  if params[:view] == "discounted"
+    @products = Product.where("price < ?", 50)
+  else
+    @products = Product.all
+  end
 end
 
 def new
@@ -47,5 +51,4 @@ def destroy
   redirect_to "/products"
   flash[:danger] = "Product Deleted: #{product.name}"
 end
-
 end

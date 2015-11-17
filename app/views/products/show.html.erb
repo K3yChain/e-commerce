@@ -1,9 +1,11 @@
-<h1>Wal*Nick</h1>
-
-<p>Product Name:  <%= @product.name %></p>
+<p><center><h3><%= @product.name %></h3></p>
 <p><img src="<%=@product.image %>  "></p>
-<p>Price: <%= @product.price %></p>
-<p>Description: <%= @product.description %></p>
+<p><%= @product.description %></center></p>
+<p>Price: $<%= @product.price %><font color="red"><strong><%= @product.sale_message %></p></strong></font>
+<p>Tax: $<%= @product.tax %></p>
+<hr>
+<p><strong>Total: $<%= @product.total %></strong></p>
+<hr>
 
 <!-- Single button -->
 <div class="btn-group">
