@@ -7,17 +7,16 @@ def friendly_created_at
   return created_at.strftime("%B %e, %Y")
 end
 
-def sale_message
-  if price.to_i < 2
-    " Discount Item!"
-    discount = 1
-  else
-    " On Sale!"
-  end
+def tax
+  tax = price * 0.09
 end
 
-def tax
-  tax = price.to_f * 0.09
+def in_stock
+  if inventory > 0
+    " * In Stock! *"
+  else
+    " * Sold Out! *"
+  end
 end
 
 def total

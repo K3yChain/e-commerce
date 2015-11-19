@@ -16,7 +16,8 @@ def create
   image = params[:image]
   price = params[:price]
   description = params[:description]
-  Product.create(name: name, image: image, price: price, description: description)
+  inventory = params[:inventory]
+  Product.create(name: name, image: image, price: price, description: description, inventory: inventory)
   redirect_to "/products/#{}"
   flash[:success] = "Product Created: #{name}"
 end
@@ -39,7 +40,8 @@ def update
   image = params[:image]
   price = params[:price]
   description = params[:description]
-  product.update(name: name, image: image, price: price, description: description)
+  inventory = params[:inventory]
+  product.update(name: name, image: image, price: price, description: description, inventory: inventory)
   flash[:success] = "Product Updated: #{name}"
   redirect_to "/products/#{product.id}"
 end

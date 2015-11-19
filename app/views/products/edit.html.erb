@@ -1,7 +1,7 @@
 <%= form_tag "/products/#{@product.id}", method: :patch do %>
 <div>
   <%= label_tag :name %>
-  <%= text_area_tag :name, @product.name %>
+  <%= text_field_tag :name, @product.name %>
 </div>
 <div>
   <%= label_tag :image %>
@@ -9,13 +9,16 @@
 </div>
 <div>
   <%= label_tag :price %>
-  <%= text_area_tag :price, @product.price %>
+  <%= text_field_tag :price, @product.price %>
 </div>
 <div>
   <%= label_tag :description %>
   <%= text_area_tag :description, @product.description %>
 </div>
-
+<div>
+  <%= label_tag :inventory %>
+  <%= number_field_tag :inventory, @product.inventory %>
+</div>
 <div>
   <%= submit_tag "Update Product" %>
 </div>

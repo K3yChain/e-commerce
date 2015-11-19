@@ -1,10 +1,11 @@
 <p><center><h3><%= @product.name %></h3></p>
 <p><img src="<%=@product.image %>  "></p>
 <p><%= @product.description %></center></p>
-<p>Price: $<%= @product.price %><font color="red"><strong><%= @product.sale_message %></p></strong></font>
-<p>Tax: $<%= @product.tax %></p>
+<p>Inventory: <%= @product.inventory %><font color="red"><strong> <%= @product.in_stock %></p></strong></font></p>
+<p>Price: <%= number_to_currency(@product.price) %></p>
+<p>Tax: <%= number_to_currency(@product.tax) %></p>
 <hr>
-<p><strong>Total: $<%= @product.total %></strong></p>
+<p><strong>Total: <%= number_to_currency(@product.total) %></strong></p>
 <hr>
 
 <!-- Single button -->
