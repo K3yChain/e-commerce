@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/products/:id', to: 'products#show'
   get '/products/:id/edit', to: 'products#edit'
   post '/products', to: 'products#create'
+  post '/products/search', to: 'products#search'
   delete '/products/:id', to: 'products#destroy'
   patch '/products/:id', to: 'products#update'
 

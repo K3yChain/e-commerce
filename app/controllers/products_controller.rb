@@ -3,9 +3,21 @@ class ProductsController < ApplicationController
 def index
   if params[:view] == "discounted"
     @products = Product.where("price < ?", 50)
+  elsif params[:view] == "low_price"
+    @products = Product.order(price: :asc)
+  elsif params[:view] == "high_price"
+    @products = Product.order(price: :desc)
+  elsif params[:view] == "random"
+    @products = Product.order("RAND()")
   else
     @products = Product.all
   end
+end
+
+def search
+    search_term = params[:search]
+    @products = Product.where("name LIKE ?", "%#{search_term}%")
+    render :index
 end
 
 def new
