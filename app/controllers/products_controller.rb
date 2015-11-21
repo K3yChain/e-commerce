@@ -16,7 +16,7 @@ end
 
 def search
     search_term = params[:search]
-    @products = Product.where("name LIKE ?", "%#{search_term}%")
+    @products = Product.where("name LIKE '%#{search_term}%' OR description LIKE '%#{search_term}%'")
     render :index
 end
 
