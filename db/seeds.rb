@@ -1,6 +1,3 @@
-User.create!([
-  {email: "nick@logitek.me", encrypted_password: "$2a$10$En/IAsiI/Mu64ZZoAttR3uuTIUzlPLkq14xSeGD38fumXCvTH8K72", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2015-11-24 02:07:40", last_sign_in_at: "2015-11-22 23:15:31", current_sign_in_ip: "::1", last_sign_in_ip: "::1"}
-])
 Image.create!([
   {url: "http://4d4a0eaf7a6154e26308-b1fe34f25669ea3ec7fe8fe4c1201c10.r0.cf2.rackcdn.com/static/popchips_bag.png", product_id: 1},
   {url: "http://peaklandcoffee.com/product/honestadepommegranateblue1.png", product_id: 2},
