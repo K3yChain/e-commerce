@@ -29,7 +29,7 @@ def create
   price = params[:price]
   description = params[:description]
   inventory = params[:inventory]
-  Product.create(name: name, image: image, price: price, description: description, inventory: inventory)
+  Product.create(name: name, price: price, description: description, inventory: inventory, user_id: current_user.id)
   redirect_to "/products/#{}"
   flash[:success] = "Product Created: #{name}"
 end

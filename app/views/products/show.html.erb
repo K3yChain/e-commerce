@@ -1,14 +1,32 @@
 <p><center><h3><%= @product.name %></h3></p>
-<p><img src="<%=@product.image %>  "></p>
+<% @product.images.each do |image| %>
+<p><img src="<%=image.url %>  "></p>
+<% end %>
 <p><%= @product.description %></center></p>
 <p>Inventory: <%= @product.inventory %><font color="red"><strong> <%= @product.in_stock %></p></strong></font></p>
+<p>Supplier: <%= @product.supplier.name %>
+
 <p>Price: <%= number_to_currency(@product.price) %></p>
 <p>Tax: <%= number_to_currency(@product.tax) %></p>
 <hr>
+
 <p><strong>Total: <%= number_to_currency(@product.total) %></strong></p>
 <hr>
-
-<!-- Single button -->
+<%= form_tag "/orders", method: :post do %>
+<div>
+  <%= label_tag :quantity %>
+  <%= text_field_tag :quantity %>
+</div>
+<div>
+  <%= label_tag :product_id %>
+  <%= text_field_tag :product_id %>
+</div>
+<div>
+  <%= submit_tag "Buy Now!" %>
+</div>
+<% end %>
+<br>
+<br>
 <div class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Modify Product <span class="caret"></span>

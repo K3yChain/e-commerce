@@ -5,7 +5,7 @@
       <div class ="product-box">
         <a href="/products/<%= name.id%>">
           <p>Product Name: <%= name.name %></p>
-          <p><img src="<%=name.image %> " class="img-responsive"></p>
+          <p><img src="<%=name.images.first.url %> " class="img-responsive"></p>
           <p><%= name.description %></p>
           <p>Inventory: <%= name.inventory %></p>
           <p>Price: <strong><%= number_to_currency(name.price) %></strong></p>
