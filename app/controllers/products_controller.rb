@@ -1,14 +1,15 @@
 class ProductsController < ApplicationController
 
 def index
+  @categories = Category.all
   if params[:view] == "discounted"
-    @products = Product.where("price < ?", 50)
-  elsif params[:view] == "low_price"
-    @products = Product.order(price: :asc)
-  elsif params[:view] == "high_price"
+    @products = Product.get_discounted
+  elsif params[:view] == "order_by_price"
+    @products = Product.order(:price)
+  elsif params[:view] == "order_by_price_desc"
     @products = Product.order(price: :desc)
-  elsif params[:view] == "random"
-    @products = Product.order("RAND()")
+  elsif params[:category]
+    @products = Category.find_by(name: params[:category]).products
   else
     @products = Product.all
   end
@@ -21,22 +22,23 @@ def search
 end
 
 def new
+  @product = Product.new
 end
 
 def create
-  name = params[:name]
-  image = params[:image]
-  price = params[:price]
-  description = params[:description]
-  inventory = params[:inventory]
-  Product.create(name: name, price: price, description: description, inventory: inventory, user_id: current_user.id)
-  redirect_to "/products/#{}"
-  flash[:success] = "Product Created: #{name}"
+  @product = Product.new(id: params[:id], name: params[:name], price: params[:price], description: params[:description], rating: params[:rating], user_id: current_user.id)
+  if @product.save
+  flash[:success] = "Product made!"
+  redirect_to "/products/#{@product.id}"
+  else
+    render :new
+  end
 end
 
 def show
   id = params[:id]
   @product = Product.find_by(id: id)
+  @carted_product = CartedProduct.new
 end
 
 def edit

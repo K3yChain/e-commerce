@@ -3,7 +3,12 @@ class Product < ActiveRecord::Base
   has_many :images
   has_many :orders
   belongs_to :user
+  has_many :categorized_products
+  has_many :categories, through: :categorized_products
+  has_many :carted_products
 
+  validates :price, :name, :description, :inventory, presence: true
+  validates :price, :inventory, numericality: true
 
 def product_list
 end

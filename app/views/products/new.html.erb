@@ -1,28 +1,30 @@
 <div class="page-header">
-  <h1>Nick's Capstone Store
+  <h1>nMart
   <small>Add Products</small></h1>
 </div>
 
+<% if @product && @product.errors.any? %>
+  <% @product.errors.full_messages.each do | message| %>
+    <font color="red"><strong><li><%= message %></li></strong></font>
+  <% end %>
+<% end %>
+<br>
 <%= form_tag '/products', method: :post do %>
 <div>
   <%= label_tag :name %>
-  <%= text_field_tag :name %>
-</div>
-<div>
-  <%= label_tag :image %>
-  <%= text_field_tag :image %>
+  <%= text_field_tag :name, @product.name %>
 </div>
 <div>
   <%= label_tag :price %>
-  <%= text_field_tag :price %>
+  <%= text_field_tag :price, @product.price %>
 </div>
 <div>
   <%= label_tag :description %>
-  <%= text_field_tag :description %>
+  <%= text_field_tag :description, @product.description %>
 </div>
 <div>
   <%= label_tag :inventory %>
-  <%= text_field_tag :inventory %>
+  <%= text_field_tag :inventory, @product.inventory %>
 </div>
 <div>
   <%= submit_tag "Submit Product" %>

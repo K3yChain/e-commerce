@@ -4,7 +4,6 @@
 <% end %>
 <p><%= @product.description %></center></p>
 <p>Inventory: <%= @product.inventory %><font color="red"><strong> <%= @product.in_stock %></p></strong></font></p>
-<p>Supplier: <%= @product.supplier.name %>
 
 <p>Price: <%= number_to_currency(@product.price) %></p>
 <p>Tax: <%= number_to_currency(@product.tax) %></p>
@@ -12,17 +11,16 @@
 
 <p><strong>Total: <%= number_to_currency(@product.total) %></strong></p>
 <hr>
-<%= form_tag "/orders", method: :post do %>
+<%= form_tag "/carted_products", method: :post do %>
 <div>
   <%= label_tag :quantity %>
   <%= text_field_tag :quantity %>
 </div>
 <div>
-  <%= label_tag :product_id %>
-  <%= text_field_tag :product_id %>
+  <%= hidden_field_tag :product_id, @product.id %>
 </div>
 <div>
-  <%= submit_tag "Buy Now!" %>
+  <%= submit_tag "Add To Cart" %>
 </div>
 <% end %>
 <br>
