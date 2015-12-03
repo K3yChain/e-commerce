@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   post '/carted_products', to: 'carted_products#create'
 
   post '/orders', to: 'orders#create'
+
+  get '/orders/:id', to: 'orders#show'
   
   # The priority is based upon order of creation: first created -> highest priority.  
   # See how all your routes lay out with "rake routes".
