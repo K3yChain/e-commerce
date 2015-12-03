@@ -1,10 +1,14 @@
 class CartedProductsController < ApplicationController
 
   def index
-    @carted_products = current_user.carted_products.where(status: "carted")
-    @subtotal = calculate_subtotal(@carted_products)
-    @tax = calculate_tax(@carted_products)
-    @total = @subtotal + @tax
+    if current_user && current_user.carted_products.where(status: "carted").any?
+      @carted_products = current_user.carted_products.where(status: "carted")
+      @subtotal = calculate_subtotal(@carted_products)
+      @tax = calculate_tax(@carted_products)
+      @total = @subtotal + @tax
+    else
+      redirect_to "/"
+    end
   end
 
   def create
