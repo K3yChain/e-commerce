@@ -46,6 +46,7 @@
           </ul>
         </li>
         <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Suppliers", "/suppliers" %></li>
         <% if current_user %>
           <li><%= link_to "Sign Out", "/users/sign_out", method: :delete %></li>
           <li><a><%= current_user.email %> is signed in</a></li>

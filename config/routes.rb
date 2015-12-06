@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   root to: "products#index"
   get '/products', to: 'products#index'
   get '/products/new', to: 'products#new'
@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   delete '/carted_products/:id', to: 'carted_products#destroy'
 
   post '/orders', to: 'orders#create'
-
   get '/orders/:id', to: 'orders#show'
+
+  resources :suppliers
   
   # The priority is based upon order of creation: first created -> highest priority.  
   # See how all your routes lay out with "rake routes".

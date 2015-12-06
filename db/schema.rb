@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201034402) do
+ActiveRecord::Schema.define(version: 20151204051153) do
 
   create_table "carted_products", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -63,12 +63,21 @@ ActiveRecord::Schema.define(version: 20151201034402) do
     t.integer  "user_id",     limit: 4
   end
 
-  create_table "suppliers", force: :cascade do |t|
+  create_table "roles", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.string   "email",      limit: 255
-    t.string   "phone",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.text     "company_name", limit: 65535
+    t.text     "first_name",   limit: 65535
+    t.text     "last_name",    limit: 65535
+    t.text     "phone_number", limit: 65535
+    t.text     "email",        limit: 65535
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.boolean  "active",                     default: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,6 +93,7 @@ ActiveRecord::Schema.define(version: 20151201034402) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.integer  "role_id",                limit: 4,   default: 2
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

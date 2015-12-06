@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show, :search]
 
 def index
   @categories = Category.all
@@ -22,7 +23,11 @@ def search
 end
 
 def new
+  if current_user && current_user.admin?
   @product = Product.new
+  else
+    redirect_to "/"
+  end
 end
 
 def create

@@ -1,0 +1,26 @@
+<div class="row">
+  <% @suppliers.each do |supplier| %>
+  <center>
+    <div class ="col-sm-3">
+      <div class ="product-box">
+          <p>Company Name: <%= supplier.company_name %></p>
+          <p>First Name: <%= supplier.first_name %></p>
+          <p>Last Name: <%= supplier.last_name %></p>
+          <p>Phone Number: <%= supplier.phone_number %></p>
+          <p>Email: <%= supplier.email %></p>
+        </a>
+        <!-- Single button -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Modify Supplier <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+          <li><%= link_to "Edit", "/suppliers/#{supplier.id}/edit" %></li>
+          <li><%= link_to "Delete", "/suppliers/#{supplier.id}", method: :delete %></li>
+          </ul>
+        </div>
+      </div>
+    </div> 
+</center>
+<% end %>
+</div>
